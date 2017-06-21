@@ -45,7 +45,7 @@ def on_chat_message(msg):
     # - chat_type: por ahora siempre es private
 
     print content_type, chat_type, chat_id
-    
+
     # El mensaje puede no tener remitente, en caso que sea así nos referiremos
     # como Ciudadano
     try:
