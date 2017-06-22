@@ -10,7 +10,7 @@ from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton #Inclu
 import time #Librería con funcionalidades manipular y dar formato a fechas y horas
 
 # Mis funciones
-from apiai import *
+from busquedaRespuesta import *
 from variables import *
 # from comunicacionWebhook import *
 # from DAO import *
@@ -57,11 +57,10 @@ def on_chat_message(msg):
     if content_type == "text" and msg.has_key('text'):
 
         texto = msg['text']
-        resp = sendQuery(texto)
 
-        print resp
+        respuesta = obtenerRespuesta(texto)
 
-        bot.sendMessage(chat_id, "Hola")
+        bot.sendMessage(chat_id, respuesta)
     else:
         bot.sendMessage(chat_id, "Perdona pero no entiendo este tipo de mensajes.")
 
