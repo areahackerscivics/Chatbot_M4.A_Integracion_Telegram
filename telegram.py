@@ -57,7 +57,7 @@ def on_chat_message(msg):
 
         texto = msg['text']
 
-        respuesta = obtenerRespuesta(texto)
+        respuesta = obtenerRespuesta(texto,chat_id)
 
         bot.sendMessage(chat_id, respuesta)
     else:

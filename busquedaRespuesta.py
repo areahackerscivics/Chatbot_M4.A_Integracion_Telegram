@@ -16,9 +16,9 @@ from comunicacionWebhook import *
 ## Funciónes
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 respuesta = ''
-def obtenerRespuesta(texto):
+def obtenerRespuesta(texto,chat_id):
 
-    respApiai = sendQuery(texto)
+    respApiai = sendQuery(texto,chat_id)
 
     # Si la respuesta es correcta
     if respApiai.status_code==200:

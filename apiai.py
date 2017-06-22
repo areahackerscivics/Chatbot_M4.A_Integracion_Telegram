@@ -34,11 +34,11 @@ headers = {
 ## Funciónes
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def sendQuery(texto):
+def sendQuery(texto,chat_id):
     payload = {
         "query": texto,
         "v": v,
-        "sessionId":"1234567890",
+        "sessionId": chat_id
         "lang": APIAI_LANG
         }
 
