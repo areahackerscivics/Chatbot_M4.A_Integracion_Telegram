@@ -16,8 +16,10 @@ from comunicacionWebhook import *
 ## Funciónes
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 respuesta = ''
-def obtenerRespuesta(texto,chat_id):
+resErrorRespApiai = 'El servicio esta caído ahora mismo, vuelve a intentarlo más tarde'
 
+def obtenerRespuesta(texto,chat_id):
+    
     respApiai = sendQuery(texto,chat_id)
 
     # Si la respuesta es correcta
@@ -40,6 +42,6 @@ def obtenerRespuesta(texto,chat_id):
             # No tiene que conectarse al WebHook
             respuesta = respApiai['result']['speech']
     else:
-        respuesta = 'El servicio esta caído ahora mismo, vuelve a intentarlo más tarde'
+        respuesta = resErrorRespApiai
 
     return respuesta
