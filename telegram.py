@@ -10,7 +10,7 @@ from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton #Inclu
 import time #Librería con funcionalidades manipular y dar formato a fechas y horas
 
 # Mis funciones
-# from apiai import *
+from apiai import *
 from variables import *
 # from comunicacionWebhook import *
 # from DAO import *
@@ -38,36 +38,42 @@ tecladoIdioma = InlineKeyboardMarkup(inline_keyboard=[
 
 # Si el mensaje recibido se tratara de un chat ------------------------------------------------------------------------------------------------------------------------
 def on_chat_message(msg):
-    print "Chat"
     content_type, chat_type, chat_id = telepot.glance(msg)
-    # - chat_id: identificador único del chat al que responderemos
     # - content_type: tipo de contenido del mensaje (text, etc.)
     # - chat_type: por ahora siempre es private
+    # - chat_id: identificador único del chat al que responderemos
 
     print content_type, chat_type, chat_id
 
-    # El mensaje puede no tener remitente, en caso que sea así nos referiremos
-    # como Ciudadano
-    try:
+    # Si tiene remitente sacamos su nombre, si no le llamamos 'Ciudadano'
+    if msg.has_key('from'):
         nombreUsuario = msg['from']['first_name'] # Guardamos la variable de el nombre del usuario que se conecta
         idUsario = msg['from']['id']
-    except:
+    else:
         nombreUsuario = 'Ciudadano'
         idUsario = 0
-    if content_type == "text":
+
+    # Solo dejamos entrar los mensajes que son tipo text
+    if content_type == "text" and msg.has_key('text'):
+
+        texto = msg['text']
+        resp = sendQuery(texto)
+
+        print resp
+
         bot.sendMessage(chat_id, "Hola")
     else:
-        pass
+        bot.sendMessage(chat_id, "Perdona pero no entiendo este tipo de mensajes.")
 
 
 # Si el mensaje recibido se tratara de un respuesta CALLBACK (de un teclado) -----------------------------------------------------------------------------------------
 def on_callback_query(msg):
-    print "B"
+    print "Dentro de on_callback_query"
 
 
 # Si el mensaje recibido se tratara de un respuesta inline query (NO vamos a usar por ahora) -------------------------------------------------------------------------
 def on_inline_query(msg):
-    print "Entro inline"
+    print "Dentro de on_inline_query"
 
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
