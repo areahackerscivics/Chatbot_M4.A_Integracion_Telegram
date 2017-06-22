@@ -5,6 +5,7 @@
 ## Librerias
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 from apiai import *
+from comunicacionWebhook import *
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Variables
@@ -16,10 +17,29 @@ from apiai import *
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 respuesta = ''
 def obtenerRespuesta(texto):
+
     respApiai = sendQuery(texto)
-    if respApiai['status']['code'] == 200 and respApiai['result']['metadata']['webhookUsed'] == 'true':
-        respuesta = buscarRespuestaWH(resp)
+
+    # Si la respuesta es correcta
+    if respApiai.status_code==200:
+        respApiai = respApiai.json() # Convertimos a dic
+
+        if respApiai['result']['metadata']['webhookUsed'] == 'true':
+            # Se conecta al WebHook
+            respWH = buscarRespuestaWH(respApiai)
+
+            if respWH.status_code==200:
+                # Si la respuesta es correcta
+                respWH = respWH.json() # Convertimos a dic
+                respuesta = respWH['displayText']
+            else:
+                # Si no tomamos la respuesta por defecto
+                respuesta = respApiai['result']['speech']
+
+        else:
+            # No tiene que conectarse al WebHook
+            respuesta = respApiai['result']['speech']
     else:
-        respuesta = respApiai['result']['speech']
+        respuesta = 'El servicio esta caído ahora mismo, vuelve a intentarlo más tarde'
 
     return respuesta

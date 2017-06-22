@@ -22,10 +22,9 @@ def buscarRespuestaWH(r):
     """La variable 'resultado' será pasado como diccionario con
     el esquema de respuesta de api.ai. Solo se llamara a la
     función cuando webhookUsed = 'true' """
+    print 'Hola desde WH'
 
-    print r['result']['metadata']['webhookUsed']
-    if r['result']['metadata']['webhookUsed'] == 'true':
-        res = requests.post(WebHook_URL, data=json.dumps(r))
+    res = requests.post(WebHook_URL, data=json.dumps(r))
 
     # print type(r) # <class 'requests.models.Response'>
     # r = r.json()
@@ -36,4 +35,5 @@ def buscarRespuestaWH(r):
     # print "Dentro de Apiai"
     # pprint(r)
     # res = requests.post(WebHook_URL, data=json.dumps(r))
-    return res.json()
+    # print type(res.json())
+    return res#.json()

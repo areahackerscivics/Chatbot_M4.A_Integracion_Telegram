@@ -12,7 +12,6 @@ import time #Librería con funcionalidades manipular y dar formato a fechas y ho
 # Mis funciones
 from busquedaRespuesta import *
 from variables import *
-# from comunicacionWebhook import *
 # from DAO import *
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------

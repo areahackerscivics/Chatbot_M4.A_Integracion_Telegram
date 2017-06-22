@@ -46,4 +46,4 @@ def sendQuery(texto):
 
     r = requests.post(url, data=json.dumps(payload), headers=headers)
 
-    return r.json()
+    return r
