@@ -54,8 +54,10 @@ def on_chat_message(msg):
     except:
         nombreUsuario = 'Ciudadano'
         idUsario = 0
-
-    bot.sendMessage(chat_id, "Hola")
+    if content_type == "text":
+        bot.sendMessage(chat_id, "Hola")
+    else:
+        pass
 
 
 # Si el mensaje recibido se tratara de un respuesta CALLBACK (de un teclado) -----------------------------------------------------------------------------------------
