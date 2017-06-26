@@ -22,6 +22,7 @@ except:
 client = pymongo.MongoClient(urlMongoDB)
 db = client.get_default_database() # Accedemos a la BD donde tenemos las colecciones
 dbUsuarios = db.usuarios
+dbMensajes = db.mensajes
 
 #msg['from']={'nombre': 'Arnau', '_id': 192224003, 'idioma': 'cast'}
 
@@ -52,14 +53,19 @@ def buscarUsuario(mensaje):
 
     return cursor
 
+def insertarMensaje(mensaje):
+    try:
+        dbMensajes.insert_one(mensaje)
+    except:
+        print 'Error al insertar Mensaje'
 
-# /////////////////////////////
-msg = {}
-msg['from']={'first_name': 'Arnau', 'id': 192224003}
-
-# if buscarUsuario(msg)==[]:
-#     print "nuevo"
-#     insertarNuevoUsuario(msg)
-# else:
-#     print "EXISTE"
-insertarNuevoUsuario(msg)
+# # /////////////////////////////
+# msg = {}
+# msg['from']={'first_name': 'Arnau', 'id': 192224003}
+#
+# # if buscarUsuario(msg)==[]:
+# #     print "nuevo"
+# #     insertarNuevoUsuario(msg)
+# # else:
+# #     print "EXISTE"
+# insertarNuevoUsuario(msg)

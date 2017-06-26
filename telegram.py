@@ -12,7 +12,7 @@ import time #Librería con funcionalidades manipular y dar formato a fechas y ho
 # Mis funciones
 from busquedaRespuesta import *
 from variables import *
-# from DAO import *
+from DAO import *
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Variables
@@ -37,6 +37,9 @@ tecladoIdioma = InlineKeyboardMarkup(inline_keyboard=[
 
 # Si el mensaje recibido se tratara de un chat ------------------------------------------------------------------------------------------------------------------------
 def on_chat_message(msg):
+
+    insertarMensaje(msg)
+
     content_type, chat_type, chat_id = telepot.glance(msg)
     # - content_type: tipo de contenido del mensaje (text, etc.)
     # - chat_type: por ahora siempre es private

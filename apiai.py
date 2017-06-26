@@ -38,7 +38,7 @@ def sendQuery(texto,chat_id):
     payload = {
         "query": texto,
         "v": v,
-        "sessionId": chat_id
+        "sessionId": chat_id,
         "lang": APIAI_LANG
         }
 
