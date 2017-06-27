@@ -45,6 +45,7 @@ botInactivo = "¡Huy, ahora mismo estoy en mantenimiento! Vuelve a hablarme más
 comandoStart = 'Hola, es la primera vez que entras. ¿En qué idioma quieres que me comunique contigo?'
 usuarioNoGuardado = 'Hola parece que ha habido un error y no tengo almacenado en que idioma quieres que me comunique contigo. ¿Me lo podrías recordar?'
 errorNoTexto = "Perdona pero no entiendo este tipo de mensajes."
+comandoIdioma = "¿En qué idioma quieres que me comunique contigo a partir de ahora?"
 
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,6 +93,9 @@ def on_chat_message(msg):
             if comando == '/start':
                 insertarNuevoUsuario(nombreUsuario,idUsario)
                 bot.sendMessage(chat_id, comandoStart, reply_markup=tecladoIdioma)
+            elif comando == '/idioma':
+                bot.sendMessage(chat_id, comandoIdioma, reply_markup=tecladoIdioma)
+
             # elif comando == '': # Añadir comandos
         # ----------------------------------------------------------------------------------------------- COMANDOS
 
