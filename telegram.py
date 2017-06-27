@@ -21,6 +21,7 @@ from botonesTeclados import *
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 try:
     TOKEN = os.environ['BOT_ACCESS_TOKEN']
+    activo = os.environ['activo']
 
 except:
     print "Error al cargar token de Telegram"
@@ -40,6 +41,7 @@ funcionBoton = { # Las funciones se encuentran en: "from botonesTeclados import 
     } # Tiene que estar al final de las funciones que pretendemos llamar
 
 # TEXTOS --------------------------------------------------------------------------------------------------------------------------------------------------
+botInactivo = "¡Huy, ahora mismo estoy en mantenimiento! Vuelve a hablarme más tarde por favor."
 comandoStart = 'Hola, es la primera vez que entras. ¿En qué idioma quieres que me comunique contigo?'
 usuarioNoGuardado = 'Hola parece que ha habido un error y no tengo almacenado en que idioma quieres que me comunique contigo. ¿Me lo podrías recordar?'
 errorNoTexto = "Perdona pero no entiendo este tipo de mensajes."
@@ -51,7 +53,6 @@ errorNoTexto = "Perdona pero no entiendo este tipo de mensajes."
 
 # Si el mensaje recibido se tratara de un chat ------------------------------------------------------------------------------------------------------------------------
 def on_chat_message(msg):
-
     insertarMensaje(msg) # Insertamos el mensaje recibido en la BD
 
     content_type, chat_type, chat_id = telepot.glance(msg)
@@ -59,8 +60,12 @@ def on_chat_message(msg):
                 # - chat_type: por ahora siempre es private
                 # - chat_id: identificador único del chat al que responderemos
 
-    print content_type, chat_type, chat_id
-    print msg
+    if activo == 'False':
+        actualizarUsuario(chat_id)
+        bot.sendMessage(chat_id, botInactivo)
+        return
+    # print content_type, chat_type, chat_id
+    # print msg
 
     # Solo dejamos entrar los mensajes que son tipo text
     if content_type == "text" and msg.has_key('text'):
