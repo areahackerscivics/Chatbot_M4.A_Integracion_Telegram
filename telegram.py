@@ -21,7 +21,7 @@ from botonesTeclados import *
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 try:
     TOKEN = os.environ['BOT_ACCESS_TOKEN']
-    activo = os.environ['activo']
+    # activo = os.environ['activo']
 
 except:
     print "Error al cargar token de Telegram"
@@ -61,7 +61,7 @@ def on_chat_message(msg):
                 # - chat_type: por ahora siempre es private
                 # - chat_id: identificador único del chat al que responderemos
 
-    if activo == 'False':
+    if activo == False:
         actualizarUsuario(chat_id)
         bot.sendMessage(chat_id, botInactivo)
         return
@@ -106,7 +106,7 @@ def on_chat_message(msg):
 
             # usuario = [{u'fechaInsercion': datetime.datetime(2017, 6, 26, 11, 42, 53, 295000), u'fechaUltimoAcceso': datetime.datetime(2017, 6, 27, 11, 14, 25, 415000), u'_id': 192224003, u'nombre': u'Arnau', u'idioma': u'Val', u'numPreguntas': 2}]
 
-            if usuario == []: # Usuario no existe
+            if usuario == None: # Usuario no existe
                 insertarNuevoUsuario(nombreUsuario,idUsario)
                 bot.sendMessage(chat_id, usuarioNoGuardado, reply_markup=tecladoIdioma)
             else: # Usuario existe

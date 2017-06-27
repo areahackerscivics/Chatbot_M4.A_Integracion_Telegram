@@ -46,7 +46,7 @@ def buscarUsuario(idUsario):
         '_id': idUsario
     }
     try:
-        cursor = list(dbUsuarios.find(query))
+        cursor = dbUsuarios.find_one(query)
     except:
         print "Error en buscar Usuario"
 
