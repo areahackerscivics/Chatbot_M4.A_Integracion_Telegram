@@ -26,14 +26,14 @@ dbMensajes = db.mensajes
 
 #msg['from']={'nombre': 'Arnau', '_id': 192224003, 'idioma': 'cast'}
 
-def insertarNuevoUsuario(mensaje):
-    usuario = mensaje['from']
-
+def insertarNuevoUsuario(nombreUsuario, idUsario):
     query = {
-        '_id': usuario['id'],
-        'nombre': usuario['first_name'],
+        '_id': idUsario,
+        'nombre': nombreUsuario,
         'idioma': "Cast",
-        'fechaInsercion': datetime.now()
+        'fechaInsercion': datetime.now(),
+        'fechaUltimoAcceso': datetime.now(),
+        'numPreguntas': 1
     }
 
     try:
@@ -41,10 +41,9 @@ def insertarNuevoUsuario(mensaje):
     except:
         print "Error al insertar Usuario"
 
-def buscarUsuario(mensaje):
-    usuarioID = mensaje['from']['id']
+def buscarUsuario(idUsario):
     query = {
-        '_id': usuarioID
+        '_id': idUsario
     }
     try:
         cursor = list(dbUsuarios.find(query))
@@ -58,6 +57,32 @@ def insertarMensaje(mensaje):
         dbMensajes.insert_one(mensaje)
     except:
         print 'Error al insertar Mensaje'
+
+def actualizarUsuario(idUsario):
+    query = {
+        '_id': idUsario
+    }
+    update = { '$inc': { 'numPreguntas': 1}, '$set': {'fechaUltimoAcceso': datetime.now()}}
+
+    try:
+        dbUsuarios.update_one(query,update)
+        return True
+    except:
+        print "Error al actualizar el idioma"
+
+
+def actualizarIdioma(idUsario,idioma):
+    query = {
+        '_id': idUsario
+    }
+    update = {'$set': {'idioma': idioma}}
+    try:
+        result = dbUsuarios.update_one(query,update)
+        return True
+    except:
+        print "Error al actualizar el idioma"
+
+
 
 # # /////////////////////////////
 # msg = {}
