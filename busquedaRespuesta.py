@@ -6,12 +6,12 @@
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 from apiai import *
 from comunicacionWebhook import *
+from textos import *
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Variables
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 respuesta = ''
-resErrorRespApiai = 'El servicio esta caído ahora mismo, vuelve a intentarlo más tarde'
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Funciónes
@@ -24,7 +24,6 @@ def obtenerRespuesta(texto,chat_id, idioma, nombreUsuario):
     # Si la respuesta es correcta
     if respApiai.status_code==200:
         respApiai = respApiai.json() # Convertimos a dic
-        print respApiai
 
         if respApiai['result']['metadata']['webhookUsed'] == 'true':
             # Se conecta al WebHook
@@ -42,6 +41,6 @@ def obtenerRespuesta(texto,chat_id, idioma, nombreUsuario):
             # No tiene que conectarse al WebHook
             respuesta = respApiai['result']['speech']
     else:
-        respuesta = resErrorRespApiai
+        respuesta = busquedaTexto("resErrorRespApiai",idioma)
 
     return respuesta

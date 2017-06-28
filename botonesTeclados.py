@@ -7,29 +7,21 @@
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import telepot #Framework para Telegram Bot API
 from DAO import *
+from textos import *
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## Variables
+## Funciónes
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-textAlPulsarCast = 'Guardado en memoria.'
-respuestaCambioIdiomaCast = 'A partir de ahora las comunicaciones serán en castellano.'
-respuestaCambioIdiomaCastError = 'No se pudo guardar el cambio en estos momentos, vuelve a intentarlo más tarde por favor.'
-
-
-textAlPulsarVal = "Guardat en memòria."
-respuestaCambioIdiomaVal = "A partir d'ara les comunicacions seran en valencià."
-respuestaCambioIdiomaValError = "No s'ha pogut desar el canvi ara mateix, torna a intentar-ho més tard si us plau."
-
 
 def idiomaCast(bot, query_id, idUsuario, query_data):
     # Actualizar los datos de idioma
     resultado = actualizarIdioma(idUsuario, query_data)
 
     if resultado == True:
-        bot.answerCallbackQuery(query_id, text=textAlPulsarCast)
-        bot.sendMessage(idUsuario, respuestaCambioIdiomaCast)
+        bot.answerCallbackQuery(query_id, text=busquedaTexto('pulsarBotonIdioma','Cast'))
+        bot.sendMessage(idUsuario, busquedaTexto('respuestaCambioIdioma','Cast'))
     else:
-        bot.sendMessage(idUsuario, respuestaCambioIdiomaCastError)
+        bot.sendMessage(idUsuario, busquedaTexto('respuestaCambioIdiomaError','Cast'))
 
 
 def idiomaVal(bot, query_id, idUsuario, query_data):
@@ -37,7 +29,7 @@ def idiomaVal(bot, query_id, idUsuario, query_data):
     resultado = actualizarIdioma(idUsuario, query_data)
 
     if resultado == True:
-        bot.answerCallbackQuery(query_id, text=textAlPulsarVal)
-        bot.sendMessage(idUsuario, respuestaCambioIdiomaVal)
+        bot.answerCallbackQuery(query_id, text=busquedaTexto('pulsarBotonIdioma','Val'))
+        bot.sendMessage(idUsuario, busquedaTexto('respuestaCambioIdioma','Val'))
     else:
-        bot.sendMessage(idUsuario, respuestaCambioIdiomaValError)
+        bot.sendMessage(idUsuario, busquedaTexto('respuestaCambioIdiomaError','Val'))
