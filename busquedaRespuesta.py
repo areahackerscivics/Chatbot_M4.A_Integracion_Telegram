@@ -35,7 +35,13 @@ def obtenerRespuesta(texto,chat_id, idioma, nombreUsuario):
                 respuesta = respWH['displayText']
             else:
                 # Si no tomamos la respuesta por defecto
-                respuesta = respApiai['result']['speech']
+                accion = respApiai['result']['action']
+                if accion = "Complemento.Saludo" or :
+                    respuesta = busquedaTexto("resComplemento.Saludo",idioma)
+                elif accion = "input.unknown":
+                    respuesta = busquedaTexto("resinput.unknown",idioma)
+                else:
+                    respuesta = busquedaTexto("resErrorRespWH",idioma)
 
         else:
             # No tiene que conectarse al WebHook

@@ -18,6 +18,9 @@ dicVal = {
     "errorNoTexto": "Perdona però no entenc aquest tipus de missatges.",
 # busquedaRespuesta.py /////////////////////////////////////////////////////////
     "resErrorRespApiai": 'El servei està caigut ara mateix, torna a intentar-ho més tard.',
+    "resErrorRespWH": "Ops! Les dades no estan disponibles en aquests moments. Torna a manar la teua pregunta en uns pocs minuts, per favor.",
+    "resComplemento.Saludo": "Bon dia!",
+    "resinput.unknown": "Huy! Aquesta pregunta no la tenia contemplada.",
 # botonesTeclados.py ///////////////////////////////////////////////////////////
     "pulsarBotonIdioma": "Guardat en memòria.",
     "respuestaCambioIdioma": "A partir d'ara les comunicacions seran en valencià.",
@@ -33,6 +36,9 @@ dicCast = {
     "errorNoTexto": "Perdona pero no entiendo este tipo de mensajes.",
 # busquedaRespuesta.py /////////////////////////////////////////////////////////
     "resErrorRespApiai": 'El servicio esta caído ahora mismo, vuelve a intentarlo más tarde.',
+    "resErrorRespWH": "¡Ops! Los datos no están disponibles en estos momentos. Vuelve a mandar tu pregunta en unos pocos minutos, por favor.",
+    "resComplemento.Saludo": "¡Buenos días!",
+    "resinput.unknown": "¡Huy! Esa pregunta no la tenía contemplada.",
 # botonesTeclados.py ///////////////////////////////////////////////////////////
     "pulsarBotonIdioma": 'Guardado en memoria.',
     "respuestaCambioIdioma": 'A partir de ahora las comunicaciones serán en castellano.',
