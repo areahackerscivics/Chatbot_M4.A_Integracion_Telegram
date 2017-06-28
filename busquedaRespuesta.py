@@ -17,13 +17,14 @@ resErrorRespApiai = 'El servicio esta caído ahora mismo, vuelve a intentarlo m�
 ## Funciónes
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def obtenerRespuesta(texto,chat_id):
+def obtenerRespuesta(texto,chat_id, idioma, nombreUsuario):
 
-    respApiai = sendQuery(texto,chat_id)
+    respApiai = sendQuery(texto,chat_id, idioma, nombreUsuario)
 
     # Si la respuesta es correcta
     if respApiai.status_code==200:
         respApiai = respApiai.json() # Convertimos a dic
+        print respApiai
 
         if respApiai['result']['metadata']['webhookUsed'] == 'true':
             # Se conecta al WebHook
