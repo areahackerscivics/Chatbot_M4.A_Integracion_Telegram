@@ -115,9 +115,9 @@ def on_chat_message(msg):
 
     # RESPUESTA ----------------------------------------------------------------
     if content_type == "text" and msg.has_key('text') and entidad != 'bot_command': # ENTRADA TEXTUAL
-        texto = msg['text'] # Extraemos el contenido del texto
+        
 
-        respuesta = obtenerRespuesta(texto, chat_id, idioma, nombreUsuario) # Buscamos respuesta
+        respuesta = obtenerRespuesta(msg, chat_id, idioma, nombreUsuario) # Buscamos respuesta
 
         bot.sendMessage(chat_id, respuesta) # Enviamos respuesta
 

@@ -26,6 +26,11 @@ dbMensajes = db.mensajes
 
 #msg['from']={'nombre': 'Arnau', '_id': 192224003, 'idioma': 'cast'}
 
+
+##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Funciónes
+##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 def insertarNuevoUsuario(nombreUsuario, idUsario):
     query = {
         '_id': idUsario,
@@ -82,15 +87,13 @@ def actualizarIdioma(idUsario,idioma):
     except:
         print "Error al actualizar el idioma"
 
-
-
-# # /////////////////////////////
-# msg = {}
-# msg['from']={'first_name': 'Arnau', 'id': 192224003}
-#
-# # if buscarUsuario(msg)==[]:
-# #     print "nuevo"
-# #     insertarNuevoUsuario(msg)
-# # else:
-# #     print "EXISTE"
-# insertarNuevoUsuario(msg)
+def actualizarRespuesta(message_id, chat_id, respuesta, accion):
+    query = {
+        'chat.id': chat_id,
+        'message_id': message_id
+    }
+    update = {'$set': {'respuesta_accion': accion, 'respuesta_texto':respuesta}}
+    try:
+        dbMensajes.update_one(query,update)
+    except:
+        print "Error al actualizar la respuesta"
