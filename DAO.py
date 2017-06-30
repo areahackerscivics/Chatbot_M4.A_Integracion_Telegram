@@ -58,6 +58,9 @@ def buscarUsuario(idUsario):
     return cursor
 
 def insertarMensaje(mensaje):
+    fechaUnix = mensaje['date']
+    mensaje['date'] = datetime.fromtimestamp(fechaUnix)
+    
     try:
         dbMensajes.insert_one(mensaje)
     except:
