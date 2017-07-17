@@ -14,8 +14,8 @@ from variables import *
 
 try:
     WebHook_URL = os.environ['WebHook_URL']
-except:
-    print "Error al cargar la URL del WebHook"
+except Exception as e:
+    print time.strftime("%c"), "- Error al cargar la URL del WebHook: ", type(e), e
 
 
 def buscarRespuestaWH(r):
