@@ -14,8 +14,8 @@ from variables import *
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 try:
     urlMongoDB = os.environ['URL_de_MongoDB']
-except:
-    print "Error al cargar la URL del MongoDB"
+except Exception as e:
+    print time.strftime("%c"), "- Error al cargar la URL del MongoDB: ", type(e), e
 
 # urlMongoDB = "mongodb://valenciaApp:valenciaApp@ds127321.mlab.com:27321/datos_valencia"
 
@@ -43,8 +43,8 @@ def insertarNuevoUsuario(nombreUsuario, idUsario):
 
     try:
         dbUsuarios.insert_one(query)
-    except:
-        print "Error al insertar Usuario"
+    except Exception as e:
+        print time.strftime("%c"), "- Error al insertar Usuario: ", type(e), e
 
 def buscarUsuario(idUsario):
     query = {
@@ -52,19 +52,19 @@ def buscarUsuario(idUsario):
     }
     try:
         cursor = dbUsuarios.find_one(query)
-    except:
-        print "Error en buscar Usuario"
+    except Exception as e:
+        print time.strftime("%c"), "- Error en buscar Usuario: ", type(e), e
 
     return cursor
 
 def insertarMensaje(mensaje):
     fechaUnix = mensaje['date']
     mensaje['date'] = datetime.fromtimestamp(fechaUnix)
-    
+
     try:
         dbMensajes.insert_one(mensaje)
-    except:
-        print 'Error al insertar Mensaje'
+    except Exception as e:
+        print time.strftime("%c"), "- Error al insertar Mensaje: ", type(e), e
 
 def actualizarUsuario(idUsario):
     query = {
@@ -75,8 +75,8 @@ def actualizarUsuario(idUsario):
     try:
         dbUsuarios.update_one(query,update)
         return True
-    except:
-        print "Error al actualizar el idioma"
+    except Exception as e:
+        print time.strftime("%c"), "- Error al actualizar usuario: ", type(e), e
 
 
 def actualizarIdioma(idUsario,idioma):
@@ -87,8 +87,8 @@ def actualizarIdioma(idUsario,idioma):
     try:
         result = dbUsuarios.update_one(query,update)
         return True
-    except:
-        print "Error al actualizar el idioma"
+    except Exception as e:
+        print time.strftime("%c"), "- Error al actualizar el idioma: ", type(e), e
 
 def actualizarRespuesta(message_id, chat_id, respuesta, accion):
     query = {
@@ -98,5 +98,5 @@ def actualizarRespuesta(message_id, chat_id, respuesta, accion):
     update = {'$set': {'respuesta_accion': accion, 'respuesta_texto':respuesta}}
     try:
         dbMensajes.update_one(query,update)
-    except:
-        print "Error al actualizar la respuesta"
+    except Exception as e:
+        print time.strftime("%c"), "- Error al actualizar la respuesta: ", type(e), e

@@ -17,8 +17,8 @@ try:
     apiAccess = os.environ['APIAI_ACCESS_TOKEN']
     apiDeveloperAccess = os.environ['DEVELOPER_ACCESS_TOKEN']
 
-except:
-    print "Error al cargar tokens de api.ai"
+except Exception as e:
+    print time.strftime("%c"), "- Error al cargar tokens de api.ai: ", type(e), e
 
 baseURL = "https://api.api.ai/v1/"
 v = 20170605 # fecha en formato AAAAMMDD

@@ -22,8 +22,8 @@ from textos import *
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 try:
     TOKEN = os.environ['BOT_ACCESS_TOKEN']
-except:
-    print "Error al cargar token de Telegram"
+except Exception as e:
+    print time.strftime("%c"), "- Error al cargar token de Telegram: ", type(e), e
 
 
 # TECLADOS ---------------------------------------------------------------------
