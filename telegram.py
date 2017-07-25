@@ -115,7 +115,7 @@ def on_chat_message(msg):
 
     # RESPUESTA ----------------------------------------------------------------
     if content_type == "text" and msg.has_key('text') and entidad != 'bot_command': # ENTRADA TEXTUAL
-        
+
 
         respuesta = obtenerRespuesta(msg, chat_id, idioma, nombreUsuario) # Buscamos respuesta
 
@@ -156,6 +156,7 @@ bot.message_loop({'chat': on_chat_message,
 ## Mantiene el programa ejecutándose
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-print 'Listening ...'   # En consola indica que ya está en ejecución
+print time.strftime("%c"), '-> Listening ...'   # En consola indica que ya está en ejecución
 while 1:
     time.sleep(10)      # Impide el avance durante 10 segundos
+    print time.strftime("%c")
