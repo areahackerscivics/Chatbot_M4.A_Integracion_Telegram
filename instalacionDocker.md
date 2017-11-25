@@ -27,10 +27,10 @@
            $(lsb_release -cs) \
            stable"
 
-           Compruebe que la huella digital clave es: "9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88". Para ello busca utilizando los últimos 8 caracteres de la huella:
+    Compruebe que la huella digital clave es: "9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88". Para ello busca utilizando los últimos 8 caracteres de la huella:
 
         sudo apt-key fingerprint 0EBFCD88
-Con respuesta:
+    Con respuesta:
 
         pub   4096R/0EBFCD88 2017-02-22
               Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
