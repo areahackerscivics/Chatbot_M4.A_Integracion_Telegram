@@ -19,7 +19,7 @@ Las librerías actualizadas siempre estarán actualizadas en el documento [**req
     requests = 2.12.4
 
 #### Instalación
-El modulo consta con todos los archivos necesarios para ser ejecutado en Docker y la guía de instalación contara como que se tiene instalado Docker. De no ser el caso podéis instalarlo siguiendo la [guía de instalación para Ubuntu](./instalacionDocker.rm).
+El modulo consta con todos los archivos necesarios para ser ejecutado en Docker y la guía de instalación contara como que se tiene instalado Docker. De no ser el caso podéis instalarlo siguiendo la [guía de instalación para Ubuntu](./instalacionDocker.md).
 
 **Pasos**
 1. Descargar desde github el proyecto.
