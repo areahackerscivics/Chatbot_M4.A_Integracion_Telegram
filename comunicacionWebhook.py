@@ -12,10 +12,10 @@ from variables import *
 ## Variables
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-try:
-    WebHook_URL = os.environ['WebHook_URL']
-except Exception as e:
-    print time.strftime("%c"), "- Error al cargar la URL del WebHook: ", type(e), e
+# try:
+#     WebHook_URL = WebHook_URL
+# except Exception as e:
+#     print time.strftime("%c"), "- Error al cargar la URL del WebHook: ", type(e), e
 
 
 def buscarRespuestaWH(r):

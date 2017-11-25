@@ -14,8 +14,8 @@ from variables import *
 ## Variables
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 try:
-    apiAccess = os.environ['APIAI_ACCESS_TOKEN']
-    apiDeveloperAccess = os.environ['DEVELOPER_ACCESS_TOKEN']
+    apiAccess = APIAI_ACCESS_TOKEN
+    apiDeveloperAccess = DEVELOPER_ACCESS_TOKEN
 
 except Exception as e:
     print time.strftime("%c"), "- Error al cargar tokens de api.ai: ", type(e), e

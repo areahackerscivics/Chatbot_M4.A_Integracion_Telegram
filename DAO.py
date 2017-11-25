@@ -13,7 +13,7 @@ from variables import *
 ## Variables
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 try:
-    urlMongoDB = os.environ['URL_de_MongoDB']
+    urlMongoDB = URL_de_MongoDB
 except Exception as e:
     print time.strftime("%c"), "- Error al cargar la URL del MongoDB: ", type(e), e
 
