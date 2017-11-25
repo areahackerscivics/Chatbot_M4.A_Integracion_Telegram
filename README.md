@@ -1,4 +1,4 @@
-# **Módulo 1: Extracción y Almacenamiento**
+# **Módulo 4: Integración Telegram**
 
 Modulo responsable de gestionar todos los mensajes que se reciben de Telegram. Se comunica con el módulo 3 (agente inteligente) y el módulo 2 (servició web) para obtener la respuesta para el usuario. Si quieres más información entra al proyecto **[infoecoVLC: Asistente virtual para información económica municipal](https://github.com/areahackerscivics/infoecoVLC)**
 
