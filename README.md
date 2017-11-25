@@ -30,7 +30,11 @@ El modulo consta con todos los archivos necesarios para ser ejecutado en Docker 
 
         cd infoecoVLC_M4.A_Integracion_Telegram
 
-3. Creamos el archivo de variables.
+3. Cambiamos el  nombre de variables_ejemplo.py por **variables.py**.
+
+        mv variables_ejemplo.py variables.py
+
+4. Sustituir las “XXX” de dentro de **variables.py** por las variables personales.
 
 4. Creamos la imagen con nombre "mTelegram".
 
