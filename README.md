@@ -8,17 +8,17 @@ Modulo responsable de gestionar todos los mensajes que se reciben de Telegram. S
 
 ## Guía de uso
 
-#### Lenguaje de programación
+### Lenguaje de programación
 Python 2.7.12
 
-#### Librerías empleadas
+### Librerías empleadas
 Las librerías actualizadas siempre estarán actualizadas en el documento [**requirements.txt**](./requirements.txt) consultar en caso de errores.
 
     pymongo = 3.4.0
     telepot = 10.4
     requests = 2.12.4
 
-#### Instalación
+### Instalación
 El modulo consta con todos los archivos necesarios para ser ejecutado en Docker y la guía de instalación contara como que se tiene instalado Docker. De no ser el caso podéis instalarlo siguiendo la [guía de instalación para Ubuntu](./instalacionDocker.md).
 
 **Pasos**
