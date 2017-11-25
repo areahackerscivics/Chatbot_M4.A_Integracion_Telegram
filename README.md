@@ -11,14 +11,35 @@ Modulo responsable de gestionar todos los mensajes que se reciben de Telegram. S
 #### Lenguaje de programación
 Python 2.7.12
 
-### Librerías empleadas
+#### Librerías empleadas
+Las librerías actualizadas siempre estarán actualizadas en el documento [**requirements.txt**](./requirements.txt) consultar en caso de errores.
+
     pymongo = 3.4.0
     telepot = 10.4
     requests = 2.12.4
 
-Las librerías actualizadas siempre estarán actualizadas en el documento [**requirements.txt**](./requirements.txt) consultar en caso de errores.
+#### Instalación
+El modulo consta con todos los archivos necesarios para ser ejecutado en Docker y la guía de instalación contara como que se tiene instalado Docker. De no ser el caso podéis instalarlo siguiendo la [guía de instalación para Ubuntu](./instalacionDocker.rm).
 
-### Instalación
+**Pasos**
+1. Descargar desde github el proyecto.
+
+        sudo git clone https://github.com/areahackerscivics/infoecoVLC_M4.A_Integracion_Telegram.git
+
+2. Entramos en la carpeta descargada que contiene el proyecto.
+
+        cd infoecoVLC_M4.A_Integracion_Telegram
+
+3. Creamos el archivo de variables.
+
+4. Creamos la imagen con nombre "mTelegram".
+
+        sudo docker build . -t mtelegram
+
+5. Ejecutamos el contenedor en segundo plano
+
+        sudo docker run -d --name modulTelegram mtelegram
+
 
 
 ## Colaboración
