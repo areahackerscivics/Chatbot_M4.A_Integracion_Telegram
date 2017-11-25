@@ -1,14 +1,12 @@
 # Instalación de Docker para Ubuntu
 
 1. Es recomendable comprobar que tenemos Ubuntu actualizado:
-  - Actualizar los repositorios:
+    - Actualizar los repositorios:
 
           sudo apt-get update
-
-  - Comparar las versiones instaladas con las disponibles y actualizar aquellas que estén obsoletas:
+    - Comparar las versiones instaladas con las disponibles y actualizar aquellas que estén obsoletas:
 
           sudo apt-get upgrade
-
 1. Desinstalar Docker por si tenemos alguna versión antigua.
 
         sudo apt-get remove docker docker-engine docker.io
