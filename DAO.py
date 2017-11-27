@@ -6,6 +6,8 @@
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import pymongo
 from datetime import datetime # Para insertar la fecha actual
+import time #Librería con funcionalidades manipular y dar formato a fechas y horas
+
 
 from variables import *
 
