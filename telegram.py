@@ -56,30 +56,12 @@ def on_chat_message(msg):
                 # - chat_id: identificador único del chat al que responderemos
 
     idUsario = chat_id # Para usuarios normales el valor es el mismo
+    if msg.has_key('from'):
+        nombreUsuario = msg['from']['first_name'] # Guardamos la variable de el nombre del usuario que se conecta
+    else:
+        nombreUsuario = 'Ciudadano'
 
-    usuario = buscarUsuario(idUsario) # Consultamos los datos del usuario
 
-    if usuario == None: # USUARIO NO EXISTE
-        if msg.has_key('from'):
-            nombreUsuario = msg['from']['first_name'] # Guardamos la variable de el nombre del usuario que se conecta
-        else:
-            nombreUsuario = 'Ciudadano'
-
-        insertarNuevoUsuario(nombreUsuario,idUsario)
-        bot.sendMessage(chat_id, busquedaTexto('usuarioNoGuardado','Val'))
-        bot.sendMessage(chat_id, busquedaTexto('usuarioNoGuardado','Cast'), reply_markup=tecladoIdioma)
-        return # Fin
-
-    else: # USUARIO EXISTE
-        actualizarUsuario(idUsario)
-
-        if usuario.has_key('idioma') and usuario.has_key('nombre'):
-            idioma = usuario['idioma']
-            nombreUsuario = usuario['nombre']
-        else:
-            idioma = 'Cast'
-            nombreUsuario = 'Ciudadano'
-    # ------------------------------------------- EXTRACCIÓN INFORMACIÓN MENSAJE
 
     # COMANDOS -----------------------------------------------------------------
     # Búsqueda si el mensaje es un comando
@@ -102,10 +84,30 @@ def on_chat_message(msg):
             bot.sendMessage(chat_id, busquedaTexto('comandoStart','Cast'), reply_markup=tecladoIdioma)
             return # Fin
         elif comando == '/idioma':
-            bot.sendMessage(chat_id, busquedaTexto('comandoIdioma',idioma), reply_markup=tecladoIdioma)
+            bot.sendMessage(chat_id, busquedaTexto('comandoIdioma','Val'))
+            bot.sendMessage(chat_id, busquedaTexto('comandoIdioma','Cast'), reply_markup=tecladoIdioma)
             return # Fin
         # elif comando == '': # Añadir comandos
     # ----------------------------------------------------------------- COMANDOS
+
+    usuario = buscarUsuario(idUsario) # Consultamos los datos del usuario
+
+    if usuario == None: # USUARIO NO EXISTE
+        insertarNuevoUsuario(nombreUsuario,idUsario)
+        bot.sendMessage(chat_id, busquedaTexto('usuarioNoGuardado','Val'))
+        bot.sendMessage(chat_id, busquedaTexto('usuarioNoGuardado','Cast'), reply_markup=tecladoIdioma)
+        return # Fin
+
+    else: # USUARIO EXISTE
+        actualizarUsuario(idUsario)
+
+        if usuario.has_key('idioma') and usuario.has_key('nombre'):
+            idioma = usuario['idioma']
+            nombreUsuario = usuario['nombre']
+        else:
+            idioma = 'Cast'
+            nombreUsuario = 'Ciudadano'
+    # ------------------------------------------- EXTRACCIÓN INFORMACIÓN MENSAJE
 
     # ACTIVO -------------------------------------------------------------------
     if activo == False:
