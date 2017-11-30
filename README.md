@@ -36,6 +36,8 @@ El modulo consta con todos los archivos necesarios para ser ejecutado en Docker 
 
 4. Sustituir las “XXX” de dentro de **variables.py** por las variables personales.
 
+        sudo nano variables.py
+
 4. Creamos la imagen con nombre "mTelegram".
 
         sudo docker build . -t mtelegram
