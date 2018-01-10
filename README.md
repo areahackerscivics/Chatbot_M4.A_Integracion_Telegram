@@ -4,6 +4,7 @@ Modulo responsable de gestionar todos los mensajes que se reciben de Telegram. S
 
 ## Descripción
 (Imagen diagrama funcionamiento)
+![](.\Documentación\Diagrama_M4-ChatBot.png)
 
 
 ## Guía de uso
@@ -32,7 +33,7 @@ El modulo consta con todos los archivos necesarios para ser ejecutado en Docker 
 
 3. Cambiamos el  nombre de variables_ejemplo.py por **variables.py**.
 
-        mv variables_ejemplo.py variables.py
+        sudo mv variables_ejemplo.py variables.py
 
 4. Sustituir las “XXX” de dentro de **variables.py** por las variables personales.
 
